@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "~4.6.2",
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
@@ -26,6 +27,7 @@
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.2.0",
+    "classnames": "~2.3.1",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "eslint": "^8.3.0",
@@ -44,6 +46,9 @@
     "@types/lodash": "~4.14.171",
     "@types/lodash-es": "~4.17.5",
     "mini-css-extract-plugin": "^2.4.5",
+    "mobx": "~6.3.2",
+    "mobx-react": "~7.2.0",
+    "mobx-react-lite": "~3.2.0",
     "node-sass": "^6.0.0",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -55,6 +60,8 @@
     "react-app-polyfill": "^3.0.0",
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-router-config": "^5.1.1",
     "react-refresh": "^0.11.0",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^4.0.0",
@@ -154,6 +161,8 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "less": "^4.1.3",
-    "less-loader": "^5.0.0"
+    "less-loader": "^5.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-router-config": "^5.0.6"
   }
 }

@@ -1,12 +1,39 @@
-import React from 'react';
-import 'antd/dist/antd.less';
-import { Layouts } from '@/layouts';
+import "antd/dist/antd.less";
+import { AppLayouts } from "@/presentation/layouts";
+import { Router, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { routerConfig } from "@/presentation/router";
+import { Provider as MobxProvider } from "mobx-react";
+import { stores, StoresContext } from "@/presentation/store";
+import { useEffect } from "react";
+
+const getHistory = () => createBrowserHistory({});
 
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    stores.AuthStore.loadLogin(token);
+  }, []);
+
   return (
-    <div className="App">
-      <Layouts/>
-    </div>
+    <MobxProvider {...stores}>
+      <StoresContext.Provider value={stores}>
+        <Router history={getHistory()}>
+          <Switch>
+            {routerConfig.map((route, index) => {
+              const { component, ...reset } = route;
+              return (
+                <Route
+                  {...reset}
+                  key={index}
+                  render={() => <AppLayouts component={component} />}
+                />
+              );
+            })}
+          </Switch>
+        </Router>
+      </StoresContext.Provider>
+    </MobxProvider>
   );
 }
 

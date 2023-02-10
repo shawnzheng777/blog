@@ -1,5 +1,6 @@
 export interface UserDto {
-    username: string;
-    desc?: string;
-    password: string;
+  username: string;
+  password: string;
+  createTime: string;
+  desc?: string;
 }
