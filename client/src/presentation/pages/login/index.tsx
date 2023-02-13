@@ -19,7 +19,6 @@ const Login: React.FC = () => {
       if (!!data?.token) {
         message.success("登陆成功");
         loadLogin(data?.token);
-        debugger;
         setStorage(data?.token);
         setTimeout(() => {
           history.push("/");
