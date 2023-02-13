@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosError } from "axios";
 import { message } from "antd";
+import { useHistory } from "react-router";
 
 const config: AxiosRequestConfig = {
   baseURL: "/api",
@@ -25,6 +26,14 @@ axiosInstance.interceptors.response.use(
     return Promise.resolve(response.data);
   },
   (err: AxiosError<any>) => {
+    if (err?.response?.status === 401) {
+      message.warning("请先登录");
+      setTimeout(() => {
+        window.history.pushState({}, "", "/login");
+        window.location.reload();
+      }, 1000);
+      return;
+    }
     if (err?.response?.status) {
       message.error(err?.response?.data?.msg || "服务不可用");
     }

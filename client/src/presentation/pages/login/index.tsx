@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Card, message } from "antd";
 import { LoginParams, loginUser } from "@/api/auth";
-import { useRequest, useLocalStorageState } from "ahooks";
+import { useRequest } from "ahooks";
 import { isEmpty } from "lodash-es";
 import { Rule } from "@/presentation/config/rule";
 import styles from "@/presentation/pages/login/index.module.scss";
@@ -9,7 +9,6 @@ import { useHistory } from "react-router";
 import { useStores } from "@/presentation/store";
 
 const Login: React.FC = () => {
-  const [, setStorage] = useLocalStorageState("token");
   const [form] = Form.useForm();
   const history = useHistory();
   const { loadLogin } = useStores().AuthStore;
@@ -19,7 +18,7 @@ const Login: React.FC = () => {
       if (!!data?.token) {
         message.success("登陆成功");
         loadLogin(data?.token);
-        setStorage(data?.token);
+        localStorage.setItem("token", data?.token);
         setTimeout(() => {
           history.push("/");
         }, 1000);

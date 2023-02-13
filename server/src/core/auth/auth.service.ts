@@ -31,7 +31,7 @@ export class AuthService {
     }
     return {
       base_rsp: BASE_RSP,
-      user: userInfo.username,
+      username: userInfo.username,
     };
   }
 
