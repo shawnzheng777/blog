@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
 
-const Some: FC = () => <div>Some</div>;
+const Some: FC = () => <div>some</div>;
 
 export default Some;

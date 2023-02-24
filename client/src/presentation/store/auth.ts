@@ -1,10 +1,5 @@
-import {
-  makeAutoObservable,
-  runInAction,
-  computed,
-  observable,
-  action,
-} from "mobx";
+import { makeAutoObservable, runInAction, computed, observable, action } from 'mobx';
+import { apiGet } from '@/infrastructure/axios';
 
 export class AuthStore {
   @observable
@@ -28,8 +23,10 @@ export class AuthStore {
   @action
   async loadLogin(token: string | null) {
     if (token) {
+      const userInfo = await apiGet('auth/user');
+      console.log('userInfo', userInfo);
       runInAction(() => {
-        this.userInfo = {};
+        this.userInfo = userInfo;
       });
     }
   }

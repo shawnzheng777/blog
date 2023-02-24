@@ -1,22 +1,22 @@
-import React, { FC, useState } from "react";
-import { Menu, Button, Avatar } from "antd";
-import { useHistory } from "react-router";
-import { getParamFromUrl } from "@/infrastructure/history";
-import favicon from "@/assets/image/favicon.png";
-import styles from "@/presentation/layouts/index.module.scss";
-import { useStores } from "@/presentation/store";
-import { UnderlineOutlined } from "@ant-design/icons";
-import { observer } from "mobx-react-lite";
+import React, { FC, useState } from 'react';
+import { Menu, Button, Avatar, Space } from 'antd';
+import { useHistory } from 'react-router';
+import favicon from '@/assets/image/favicon.png';
+import styles from '@/presentation/layouts/index.module.scss';
+import { useStores } from '@/presentation/store';
+import { UnderlineOutlined } from '@ant-design/icons';
+import { observer } from 'mobx-react-lite';
+import { Publish } from '@/presentation/components/publish';
 
 export const Header: FC = observer(() => {
-  const defaultKey = getParamFromUrl("tab") || "home";
+  const defaultKey = window.location.pathname.replace('/', '') || 'home';
   const [key, setKey] = useState(defaultKey);
   const history = useHistory();
   const { isLogin } = useStores().AuthStore;
   const items = [
-    { label: "HOME", key: "home" },
-    { label: "SOME", key: "some" },
-    { label: "OTHER", key: "other" },
+    { label: 'HOME', key: 'home' },
+    { label: 'SOME', key: 'some' },
+    { label: 'OTHER', key: 'other' },
   ];
 
   return (
@@ -24,11 +24,11 @@ export const Header: FC = observer(() => {
       <img
         className={styles.headerIcon}
         src={favicon}
-        alt={""}
+        alt={''}
         width={38}
         height={38}
         onClick={() => {
-          history.push("home?tab=home");
+          history.push('home');
         }}
       />
       <Menu
@@ -36,22 +36,25 @@ export const Header: FC = observer(() => {
         items={items}
         onClick={(val) => {
           setKey(val.key);
-          history.push(`${val.key}?tab=${val.key}`);
+          history.push(`${val.key}`);
         }}
         activeKey={key}
       />
-      {isLogin ? (
-        <Avatar icon={<UnderlineOutlined />} />
-      ) : (
-        <Button
-          type="primary"
-          onClick={() => {
-            history.push("login");
-          }}
-        >
-          登录
-        </Button>
-      )}
+      <Space size={40}>
+        <Publish />
+        {isLogin ? (
+          <Avatar icon={<UnderlineOutlined style={{ fontSize: '16px' }} />} />
+        ) : (
+          <Button
+            type="primary"
+            onClick={() => {
+              history.push('login');
+            }}
+          >
+            登录
+          </Button>
+        )}
+      </Space>
     </>
   );
 });
