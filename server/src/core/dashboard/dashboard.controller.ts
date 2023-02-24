@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Query, Get, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Query,
+  Get,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { DashboardService } from '@/core/dashboard/dashboard.service';
 import { JwtGuard } from '@/core/auth/guard/jwt.guard';
 
@@ -8,7 +16,7 @@ export class DashboardController {
 
   @Get()
   getDashboard() {
-    return this.dashboardService.findAll();
+    return this.dashboardService.getDashboard();
   }
 
   @Get('/search')
@@ -18,7 +26,10 @@ export class DashboardController {
 
   @UseGuards(JwtGuard)
   @Post('/create')
-  async createDashboard(@Body() req) {
-    return await this.dashboardService.createDashboard(req);
+  async createDashboard(@Body() body, @Request() req) {
+    return await this.dashboardService.createDashboard({
+      ...body,
+      ...req.user,
+    });
   }
 }

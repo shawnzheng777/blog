@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Dashboard } from '@/core/dashboard/entity/dashboard.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -12,8 +12,11 @@ export class User {
   password: string;
 
   @Column()
-  createTime: string;
+  create_time: string;
 
   @Column()
   desc: string;
+
+  @OneToMany(() => Dashboard, (dashboard) => dashboard.user)
+  dashboard: Dashboard[];
 }
