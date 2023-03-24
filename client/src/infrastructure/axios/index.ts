@@ -30,6 +30,7 @@ axiosInstance.interceptors.response.use(
   (err: AxiosError<any>) => {
     if (err?.response?.status === 401) {
       message.warning('请先登录');
+      localStorage.removeItem('token');
       setTimeout(() => {
         window.history.pushState({}, '', '/login');
         window.location.reload();
