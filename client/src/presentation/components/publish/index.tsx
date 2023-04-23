@@ -45,6 +45,7 @@ export const Publish: FC = () => {
 
   useEffect(() => {
     loadLogin(localStorage.getItem('token'));
+    // eslint-disable-next-line
   }, []);
 
   const content = (

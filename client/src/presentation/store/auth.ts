@@ -20,11 +20,16 @@ export class AuthStore {
     );
   }
 
+  loginOut() {
+    localStorage.removeItem('token');
+    this.userInfo = null;
+  }
+
   @action
   async loadLogin(token: string | null) {
     if (token) {
       const userInfo = await apiGet('auth/user');
-      console.log('userInfo', userInfo);
+
       runInAction(() => {
         this.userInfo = userInfo;
       });
