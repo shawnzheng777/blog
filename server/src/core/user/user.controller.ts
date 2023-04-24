@@ -10,7 +10,7 @@ import {
 import { UserService } from '@/core/user/user.service';
 import { User } from '@/core/user/entity/user.entity';
 import { UserDto } from '@/core/user/user.dto';
-import { BaseCode } from '@/common/common.dto';
+import { BusiCode } from '@/common/common.dto';
 
 @Controller('/user')
 export class UserController {
@@ -21,7 +21,7 @@ export class UserController {
     const entity = await this.userService.findName(data.username);
     if (entity?.username) {
       return {
-        base_rsp: { code: BaseCode.Fail, msg: '用户名已存在' },
+        base_rsp: { code: BusiCode.TempUnavailable, msg: '用户名已存在' },
       };
     }
     return this.userService.create(data);

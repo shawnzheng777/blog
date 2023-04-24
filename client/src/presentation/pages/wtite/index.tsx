@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Form, Input, Button, Card, message } from 'antd';
 import styles from './index.module.scss';
 import { useRequest } from 'ahooks';
-import { createDashboard } from '@/api/dashboard';
+import { createDashboard } from '@/infrastructure/service/dashboard';
 import { useHistory } from 'react-router-dom';
 import { Rule } from '@/presentation/config/rule';
 

@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction, computed, observable, action } from 'mobx';
-import { apiGet } from '@/infrastructure/axios';
+import HttpClient from '@/infrastructure/service/request';
 
 export class AuthStore {
   @observable
@@ -28,7 +28,7 @@ export class AuthStore {
   @action
   async loadLogin(token: string | null) {
     if (token) {
-      const userInfo = await apiGet('auth/user');
+      const userInfo = await HttpClient.Get('auth/user');
 
       runInAction(() => {
         this.userInfo = userInfo;

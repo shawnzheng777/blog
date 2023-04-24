@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '@/core/user/entity/user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
-import { BASE_RSP } from '@/common/common.dto';
+import { BASE_RSP, BusiCode } from '@/common/common.dto';
 
 @Injectable()
 export class AuthService {
@@ -24,9 +24,9 @@ export class AuthService {
       throw new HttpException(
         {
           msg: '用户名密码错误',
-          code: HttpStatus.BAD_GATEWAY,
+          code: BusiCode.TempUnavailable,
         },
-        HttpStatus.BAD_GATEWAY,
+        HttpStatus.BAD_REQUEST,
       );
     }
     return {

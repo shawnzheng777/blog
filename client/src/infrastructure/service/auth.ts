@@ -1,4 +1,4 @@
-import { apiPost } from '@/infrastructure/axios';
+import HttpClient from '@/infrastructure/service/request';
 import { toSnakeCase } from '@/presentation/utils/snake-case';
 
 export type LoginParams = {
@@ -10,7 +10,7 @@ export type LoginParams = {
 
 export const loginUser = async (params: LoginParams) => {
   try {
-    const { token, user } = await apiPost('auth/login', params);
+    const { token, user } = await HttpClient.Post('auth/login', params);
     return {
       token,
       user,
@@ -23,7 +23,7 @@ export const loginUser = async (params: LoginParams) => {
 
 export const registerUser = async (params: LoginParams) => {
   try {
-    return await apiPost('user/create-user', toSnakeCase(params));
+    return await HttpClient.Post('user/create-user', toSnakeCase(params));
   } catch (e) {
     console.log('register e:', e);
     return null;

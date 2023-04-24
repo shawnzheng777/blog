@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entity/user.entity';
 import { UserDto } from '@/core/user/user.dto';
-import { BASE_RSP } from '@/common/common.dto';
+import { BASE_RSP, BusiCode } from '@/common/common.dto';
 
 @Injectable()
 export class UserService {
@@ -50,13 +50,13 @@ export class UserService {
 
   async remove(id: number) {
     await this.usersRepository.delete({ id });
-    return { code: 0, msg: 'success' };
+    return { code: BusiCode.Ok, msg: 'success' };
   }
 
   async updateUser(data: UserDto) {
     const entity = await this.findName(data.username);
     const update = await this.usersRepository.merge(entity, data);
     await this.usersRepository.save(update);
-    return { code: 0, msg: 'success' };
+    return { code: BusiCode.Ok, msg: 'success' };
   }
 }

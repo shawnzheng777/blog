@@ -1,4 +1,4 @@
-import { apiPost, apiGet } from '@/infrastructure/axios';
+import HttpClient from '@/infrastructure/service/request';
 import moment from 'moment';
 
 interface CreateParams {
@@ -17,7 +17,7 @@ export interface DashboardResp {
 // 获取面版信息
 export const getDashboard = async (): Promise<DashboardResp[]> => {
   try {
-    const { data } = await apiGet('/dashboard');
+    const { data } = await HttpClient.Get('/dashboard');
     return data;
   } catch (e) {
     console.log('getDashboard e:', e);
@@ -33,7 +33,7 @@ export const createDashboard = async (params: CreateParams) => {
       create_time: moment().format(),
       like: 0,
     };
-    return await apiPost('/dashboard/create', body);
+    return await HttpClient.Post('/dashboard/create', body);
   } catch (e) {
     console.log('createDashboard e:', e);
     return null;

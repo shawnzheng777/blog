@@ -10,6 +10,7 @@ import { AuthService } from '@/core/auth/auth.service';
 import { LocalGuard } from '@/core/auth/guard/local.guard';
 import { JwtGuard } from '@/core/auth/guard/jwt.guard';
 import { UserDto } from '@/core/user/user.dto';
+import { BASE_RSP } from '@/common/common.dto';
 
 @Controller('/auth')
 export class AuthController {
@@ -24,7 +25,10 @@ export class AuthController {
   @Get('/user')
   @UseGuards(JwtGuard)
   getProfile(@Request() req) {
-    return req.user;
+    return {
+      base_rsp: BASE_RSP,
+      ...req.user,
+    };
   }
 
   @Post('/validate-user')

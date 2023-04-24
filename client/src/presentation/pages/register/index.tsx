@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Card, message } from 'antd';
-import { LoginParams, registerUser } from '@/api/auth';
+import { LoginParams, registerUser } from '@/infrastructure/service/auth';
 import { useRequest } from 'ahooks';
 import { isEmpty } from 'lodash-es';
 import { Rule } from '@/presentation/config/rule';

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Card, Spin, Typography, Space } from 'antd';
 import { useRequest } from 'ahooks';
-import { getDashboard } from '@/api/dashboard';
+import { getDashboard } from '@/infrastructure/service/dashboard';
 import { LikeOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import styles from './index.module.scss';
