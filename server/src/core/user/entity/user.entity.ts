@@ -9,7 +9,7 @@ export class User {
   username: string;
 
   @Column()
-  password: string;
+  password?: string;
 
   @Column()
   create_time: string;
@@ -18,5 +18,5 @@ export class User {
   desc: string;
 
   @OneToMany(() => Dashboard, (dashboard) => dashboard.user)
-  dashboard: Dashboard[];
+  dashboard?: Dashboard[];
 }

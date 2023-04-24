@@ -5,6 +5,7 @@ import Other from '@/presentation/pages/other';
 import Login from '@/presentation/pages/login';
 import Register from '@/presentation/pages/register';
 import Write from '@/presentation/pages/wtite';
+import UserInfo from '@/presentation/pages/user-info';
 
 export const routerConfig: RouteConfig[] = [
   {
@@ -35,5 +36,9 @@ export const routerConfig: RouteConfig[] = [
   {
     path: '/write',
     component: Write,
+  },
+  {
+    path: '/user-info',
+    component: UserInfo,
   },
 ];

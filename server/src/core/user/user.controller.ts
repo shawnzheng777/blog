@@ -37,9 +37,9 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get('/get-user-by-id')
-  getUserById(@Query('id') id: number): Promise<User> {
-    return this.userService.findOne(id);
+  @Get('/get-user-info')
+  getUserInfo(@Query('username') username: string): Promise<User> {
+    return this.userService.findUserInfo(username);
   }
 
   @Delete('/delete-user-by-id/:id')

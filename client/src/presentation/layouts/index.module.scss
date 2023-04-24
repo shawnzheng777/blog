@@ -7,7 +7,6 @@
 .header {
   display: flex;
   background: #fff;
-  margin-bottom: 20px;
   align-items: center;
   :global {
     .ant-menu-overflow {
@@ -40,4 +39,5 @@
   background: #fff;
   color: #1890ff;
   font-size: 18px;
+  margin-top: 15px;
 }
