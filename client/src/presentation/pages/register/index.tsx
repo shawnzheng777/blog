@@ -12,6 +12,7 @@ import moment from 'moment';
 const Login: React.FC = () => {
   const [form] = Form.useForm();
   const history = useHistory();
+  const FORMAT = 'YYYY-MM-DD HH:mm:ss';
 
   const { run } = useRequest(registerUser, {
     onSuccess: (data) => {
@@ -33,7 +34,7 @@ const Login: React.FC = () => {
     }
     run({
       ...values,
-      createTime: moment().format(),
+      createTime: moment().format(FORMAT),
     });
   };
 
@@ -53,6 +54,12 @@ const Login: React.FC = () => {
         </Form.Item>
         <Form.Item label={'密码'} name={'password'} rules={Rule.password}>
           <Input.Password />
+        </Form.Item>
+        <Form.Item label={'邮箱'} name={'email'} rules={Rule.email}>
+          <Input />
+        </Form.Item>
+        <Form.Item label={'手机'} name={'phone'} rules={Rule.phone}>
+          <Input />
         </Form.Item>
         <Form.Item label={'描述'} name={'desc'}>
           <Input.TextArea />

@@ -5,6 +5,8 @@ export type LoginParams = {
   username: string;
   password: string;
   createTime: string;
+  email?: string;
+  phone?: string;
   desc?: string;
 };
 
