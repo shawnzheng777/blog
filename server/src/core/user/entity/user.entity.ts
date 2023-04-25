@@ -12,9 +12,18 @@ export class User {
   password?: string;
 
   @Column()
-  create_time: string;
+  uuid: string;
 
   @Column()
+  create_time: string;
+
+  @Column({ nullable: true })
+  email: string;
+
+  @Column({ nullable: true })
+  phone: string;
+
+  @Column({ nullable: true })
   desc: string;
 
   @OneToMany(() => Dashboard, (dashboard) => dashboard.user)

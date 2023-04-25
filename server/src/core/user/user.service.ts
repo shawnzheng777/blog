@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from './entity/user.entity';
 import { UserDto } from '@/core/user/user.dto';
 import { BASE_RSP, BusiCode } from '@/common/common.dto';
+import * as uuid from 'uuid';
 
 @Injectable()
 export class UserService {
@@ -13,7 +14,10 @@ export class UserService {
   ) {}
 
   async create(data: UserDto) {
-    const { raw } = await this.usersRepository.insert(data);
+    const { raw } = await this.usersRepository.insert({
+      ...data,
+      uuid: uuid.v4(),
+    });
     return {
       base_rsp: BASE_RSP,
       id: raw.insertId,
@@ -38,8 +42,11 @@ export class UserService {
 
     return {
       id: userInfo.id,
+      uuid: userInfo.uuid,
       username: userInfo.username,
       create_time: userInfo.create_time,
+      email: userInfo.email,
+      phone: userInfo.phone,
       desc: userInfo.desc,
     };
   }
