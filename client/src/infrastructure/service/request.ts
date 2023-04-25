@@ -23,7 +23,6 @@ axiosInstance.interceptors.response.use(
   (response) => {
     NProgress.done();
     const { base_rsp } = response.data;
-    console.log('res', response);
     if (base_rsp && base_rsp.code !== BusiCode.Ok) {
       promptMsg(base_rsp.msg, base_rsp.code, response.config.url);
     }
