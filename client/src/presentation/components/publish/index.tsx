@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { Popover, Button, Space, Typography, message } from 'antd';
-import { CaretDownOutlined, ProfileOutlined, QuestionCircleOutlined, CalendarOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, ProfileOutlined, QuestionCircleOutlined, CreditCardOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
 import { useStores } from '@/presentation/store';
 import { useHistory } from 'react-router-dom';
@@ -36,7 +36,7 @@ export const Publish: FC = () => {
     {
       key: 'project',
       text: '建项目',
-      getIcon: () => <CalendarOutlined style={{ fontSize: '30px' }} />,
+      getIcon: () => <CreditCardOutlined style={{ fontSize: '30px' }} />,
       onClick: () => {
         message.info('功能暂未开放');
       },
