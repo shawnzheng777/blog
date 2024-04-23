@@ -14,4 +14,4 @@ Blog web 端工程
 ## 开发流程
 
 1. yarn
-2. yarn start
+2. yarn run dev

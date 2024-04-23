@@ -27,7 +27,7 @@ export class AuthStore {
 
   @action
   async loadLogin(token: string | null) {
-    if (token) {
+    if (token && !this.isLogin) {
       const userInfo = await HttpClient.Get('auth/user');
 
       runInAction(() => {
