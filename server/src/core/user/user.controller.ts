@@ -27,6 +27,11 @@ export class UserController {
     return this.userService.create(body);
   }
 
+  @Post('/send-code')
+  sendCode(@Body() body: { email: string }) {
+    return this.userService.sendCode(body);
+  }
+
   @Post('/update-user')
   updateUser(@Body() body: UserDto) {
     return this.userService.updateUser(body);

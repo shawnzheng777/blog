@@ -5,6 +5,7 @@ import { User } from './entity/user.entity';
 import { UserDto } from '@/core/user/user.dto';
 import { BASE_RSP, BusiCode, CommonRes } from '@/common/common.dto';
 import * as uuid from 'uuid';
+import { Email } from '@/tools/EmailTool';
 
 @Injectable()
 export class UserService {
@@ -13,15 +14,19 @@ export class UserService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  async create(data: UserDto) {
+  async create(user: UserDto) {
     const { raw } = await this.usersRepository.insert({
-      ...data,
+      ...user,
       uuid: uuid.v4(),
     });
     return {
       base_rsp: BASE_RSP,
       id: raw.insertId,
     };
+  }
+
+  sendCode(params: { email: string }) {
+    new Email().send({ email: params.email });
   }
 
   async findAll(): Promise<CommonRes<User[]>> {

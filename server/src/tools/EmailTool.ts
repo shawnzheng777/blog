@@ -29,10 +29,9 @@ export class Email {
     };
     this.transporter.sendMail(options, (error, info) => {
       if (error) {
-        console.log('邮件发送失败');
+        console.log('邮件发送失败', error);
       } else {
-        console.log('邮件发送成功');
-        console.log(info);
+        console.log('邮件发送成功', info);
       }
     });
   }
