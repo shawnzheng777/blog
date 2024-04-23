@@ -3,6 +3,11 @@ export interface BaseRsp {
   msg: string;
 }
 
+export interface CommonRes<T> {
+  base_rsp: BaseRsp;
+  data?: T;
+}
+
 /**
  * 业务错误码
  */

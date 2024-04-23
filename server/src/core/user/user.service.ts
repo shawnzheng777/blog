@@ -3,14 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entity/user.entity';
 import { UserDto } from '@/core/user/user.dto';
-import { BASE_RSP, BusiCode } from '@/common/common.dto';
+import { BASE_RSP, BusiCode, CommonRes } from '@/common/common.dto';
 import * as uuid from 'uuid';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    private readonly usersRepository: Repository<User>,
   ) {}
 
   async create(data: UserDto) {
@@ -24,8 +24,12 @@ export class UserService {
     };
   }
 
-  findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+  async findAll(): Promise<CommonRes<User[]>> {
+    const data = await this.usersRepository.find();
+    return {
+      base_rsp: BASE_RSP,
+      data,
+    };
   }
 
   async findUserInfo(username: string): Promise<User> {

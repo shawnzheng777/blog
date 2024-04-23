@@ -1,5 +1,6 @@
 import HttpClient from '@/infrastructure/service/request';
 import moment from 'moment';
+import { IUserInfo } from '@/infrastructure/service/user';
 
 interface CreateParams {
   username: string;
@@ -12,6 +13,7 @@ export interface DashboardResp {
   content: string;
   create_time: string;
   like: number;
+  user: IUserInfo;
 }
 
 // 获取面版信息

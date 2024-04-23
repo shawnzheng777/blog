@@ -1,0 +1,7 @@
+{
+  "editor.indentSize": "tabSize",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.words": [
+    "antd"
+  ]
+}

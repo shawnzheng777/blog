@@ -32,6 +32,7 @@ const Home: FC = () => {
             <Typography.Paragraph className={styles.like}>
               <LikeOutlined className={styles.likeIcon} />
               <Typography.Text className={styles.likeNum}>{item.like}</Typography.Text>
+              <Typography.Text className={styles.autor}>作者:{item.user.username}</Typography.Text>
             </Typography.Paragraph>
           </Card>
         ))}

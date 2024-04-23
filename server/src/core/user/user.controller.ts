@@ -10,7 +10,7 @@ import {
 import { UserService } from '@/core/user/user.service';
 import { User } from '@/core/user/entity/user.entity';
 import { UserDto } from '@/core/user/user.dto';
-import { BusiCode } from '@/common/common.dto';
+import { BusiCode, CommonRes } from '@/common/common.dto';
 
 @Controller('/user')
 export class UserController {
@@ -33,7 +33,7 @@ export class UserController {
   }
 
   @Get('/get-all-user')
-  getAllUser(): Promise<User[]> {
+  getAllUser(): Promise<CommonRes<User[]>> {
     return this.userService.findAll();
   }
 
