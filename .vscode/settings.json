@@ -5,6 +5,9 @@
     "antd",
     "Busi",
     "nprogress",
+    "nodemail",
+    "nestjs",
+    "mediumtext",
     "typeorm"
   ]
 }

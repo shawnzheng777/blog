@@ -21,6 +21,9 @@ export class Dashboard {
   @Column()
   create_time: string;
 
+  @Column({ type: 'mediumtext', charset: 'utf8mb4', default: null })
+  tag: string;
+
   @Column()
   like: number;
 

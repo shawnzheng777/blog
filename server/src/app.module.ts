@@ -5,8 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoreModule } from './core/index.module';
 import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
-import { globalConfig } from './config';
-import databaseConfig from './config/database';
+import { globalConfig, databaseConfig } from './config';
 import { LoggerMiddleware } from './middleware';
 
 const { env } = process;

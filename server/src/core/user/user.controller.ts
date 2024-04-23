@@ -17,19 +17,19 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post('/create-user')
-  async createUser(@Body() data: UserDto) {
-    const entity = await this.userService.findName(data.username);
+  async createUser(@Body() body: UserDto) {
+    const entity = await this.userService.findName(body.username);
     if (entity?.username) {
       return {
         base_rsp: { code: BusiCode.TempUnavailable, msg: '用户名已存在' },
       };
     }
-    return this.userService.create(data);
+    return this.userService.create(body);
   }
 
   @Post('/update-user')
-  updateUser(@Body() data: UserDto) {
-    return this.userService.updateUser(data);
+  updateUser(@Body() body: UserDto) {
+    return this.userService.updateUser(body);
   }
 
   @Get('/get-all-user')
