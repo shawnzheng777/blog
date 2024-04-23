@@ -3,6 +3,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [
     "antd",
-    "nprogress"
+    "Busi",
+    "nprogress",
+    "typeorm"
   ]
 }

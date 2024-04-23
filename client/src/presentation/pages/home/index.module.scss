@@ -24,7 +24,6 @@
 .like {
   cursor: pointer;
   display: flex;
-  align-items: center;
 }
 
 .likeIcon {
@@ -38,7 +37,9 @@
   font-size: 16px;
 }
 
-.autor {
-  margin-left: 80px;
+.author {
+  display: flex;
+  justify-content: end;
   font-size: 16px;
+  color: #888;
 }

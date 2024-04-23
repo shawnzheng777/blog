@@ -25,15 +25,15 @@ const Home: FC = () => {
             <Typography.Title level={4} className={styles.title}>
               <Typography.Text>{item.title}</Typography.Text>
               <Typography.Text className={styles.text}>
-                发布于 {moment(item.create_time).format('YYYY-MM-DD HH:mm')}
+                {moment(item.create_time).format('YYYY/MM/DD')}
               </Typography.Text>
             </Typography.Title>
             <Typography.Paragraph>{item.content}</Typography.Paragraph>
             <Typography.Paragraph className={styles.like}>
               <LikeOutlined className={styles.likeIcon} />
               <Typography.Text className={styles.likeNum}>{item.like}</Typography.Text>
-              <Typography.Text className={styles.autor}>作者:{item.user.username}</Typography.Text>
             </Typography.Paragraph>
+            <Typography.Text className={styles.author}>{item.user.username}</Typography.Text>
           </Card>
         ))}
       </Space>

@@ -43,7 +43,7 @@ export class DashboardService {
         'dashboard',
       )
         .leftJoinAndSelect('dashboard.user', 'user')
-        .orderBy('dashboard.create_time', 'DESC')
+        .orderBy({ ['dashboard.create_time']: 'DESC' })
         .getMany();
       const filterData = data.map((item) => {
         return {
